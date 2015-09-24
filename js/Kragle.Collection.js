@@ -1,9 +1,11 @@
 Kragle.Collection = (function(){
-    function Collection(){
+    function Collection(model){
+        this.model = model;
         this.collection = [];
     }
     Collection.prototype.add = function(model){
-        this.collection.push(model);
+        //check to make sure the model doesn't already exist in the collection
+        this.collection.push(this.model.deserialize(this.model, model));
     };
     Collection.prototype.get = function(){
         return this.collection;
@@ -17,9 +19,10 @@ Kragle.Collection = (function(){
         });
     };
     Collection.prototype.filter = function(key, value){
-        return this.collection.filter(function(model){
-            if(model.fields[key] === value){
-                return model;
+        return this.collection.filter(function(item){
+            console.log(item)
+            if(item.fields[key] === value){
+                return item;
             }
         });
     };

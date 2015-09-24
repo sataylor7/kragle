@@ -8,7 +8,7 @@
         describe('instance', function(){
             var kragle_collection;
             beforeEach(function(done){
-                kragle_collection = new Kragle.Collection();
+                kragle_collection = new Kragle.Collection(Kragle.Model);
                 done();
             });
             it('should be an instance of Kragle.Collection', function(done){
@@ -64,6 +64,7 @@
                         kragle_collection.add(kragle_model_2);
                         kragle_collection.add(kragle_model_3);
                         var filtered = kragle_collection.filter('name', 'joker');
+                        console.log(filtered)
                         expect(filtered[0].fields.name).to.equal('joker');
                         done();
                     });

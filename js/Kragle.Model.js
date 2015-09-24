@@ -22,7 +22,7 @@ Kragle.Model = (function(){
     };
     Model.prototype.setUp = function(attrs){
         for(var attr in attrs){
-            this.set(attr, attrs[attr]);
+           this.set(attr, attrs[attr]);
         }
     };
     Model.prototype.toJSON = function(){
@@ -38,11 +38,15 @@ Kragle.Model = (function(){
         this.fields = {};
     };
     //class methods
-    Model.deserialize = function(json){
-        var deserialized_model = new Model();
+    Model.deserialize = function(child_constructor, json){
+        var deserialized_model = (json._id) ? new child_constructor({_id: json._id}) : new child_constructor();
         for(var key in json){
             if(json.hasOwnProperty(key)){
-                deserialized_model.fields[key] = json[key];
+                if(key === '_id' || key === 'fields'){
+                    deserialized_model[key] = json[key];
+                }else{
+                    deserialized_model.fields[key] = json[key];
+                }
             }
         }
         return deserialized_model;

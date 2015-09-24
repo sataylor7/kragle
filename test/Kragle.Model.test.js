@@ -100,7 +100,7 @@
                         age: 22,
                         pet: 'dragon'
                     };
-                    var model = Kragle.Model.deserialize(json);
+                    var model = Kragle.Model.deserialize(Kragle.Model, json);
                     expect(model.fields).to.deep.equal(json);
                     done();
                 });
