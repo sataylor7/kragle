@@ -29,12 +29,12 @@
                     });
                 });
                 describe('get()', function(){
-                    it('should retrieve the collection', function(done){
+                    it('should retrieve a model from the collection', function(done){
                         //add to the collection so that we can test this
                         kragle_collection.add(kragle_model);
-                        var collection = kragle_collection.get();
-                        expect(collection.length).to.equal(1);
-                        expect(collection).to.be.an('array');
+                        var model = kragle_collection.get(kragle_model._id);
+                        expect(model).to.be.an('object');
+                        expect(model._id).to.equal(kragle_model._id);
                         done();
                     });
                 });

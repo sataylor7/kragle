@@ -19,6 +19,10 @@ Kragle.Model = (function(){
             return value;
         }
         this.fields[key] = value;
+        Kragle.Events.emit('change:model', this);
+    };
+    Model.prototype.has = function(key){
+        return this.get(key) != null;
     };
     Model.prototype.setUp = function(attrs){
         for(var attr in attrs){
@@ -52,4 +56,4 @@ Kragle.Model = (function(){
         return deserialized_model;
     };
     return Model;
-})();
+})(Kragle.Events);
