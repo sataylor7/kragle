@@ -4,7 +4,7 @@ Kragle.Collection = (function(){
         this.collection = [];
     }
     Collection.prototype.add = function(model){
-        //check to make sure the model doesn't already exist in the collection
+        //TODO: check to make sure the model doesn't already exist in the collection
         this.collection.push(this.model.deserialize(this.model, model));
     };
     Collection.prototype.get = function(){
