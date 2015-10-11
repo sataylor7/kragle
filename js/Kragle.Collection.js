@@ -20,7 +20,6 @@ Kragle.Collection = (function(){
     };
     Collection.prototype.filter = function(key, value){
         return this.collection.filter(function(item){
-            console.log(item)
             if(item.fields[key] === value){
                 return item;
             }

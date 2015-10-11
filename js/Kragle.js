@@ -20,7 +20,7 @@ var Kragle =(function(){
         }
         id.substr(0, length);
         prefix = (prefix !== "") ? prefix + '-' : '';
-        return id = prefix + id;
+        return prefix + id;
     };
     return Kragle;
 })();
